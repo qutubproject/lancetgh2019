@@ -1,206 +1,34 @@
 
-* History Questions
+* Table A1
 
 	use  "${directory}/data/analysis.dta" , clear
 
-		rctreg ce_? sp?_h_* ///
-		using "${directory}/outputs/history.xlsx" [pweight=weight_city] ///
-		,  treatment(sp_male) controls(city_? case_? cp_5) title("History Questions") cl(facilitycode)
-
-
-
-* Graphs
-
-	* All Raw
-
-		betterbar ///
-			correct treat_refer re_1 re_3 re_4 med_any med_l_any_1 med_l_any_2 med_l_any_3 med_k_any_9 ///
-			, over(sp_male) xlab(${pct}) legend(pos(5) ring(0) c(1)) xsize(7) se ///
-			barlook(1 lc(black) lw(thin) 2 lc(black) lw(thin))
-
-		graph export "${directory}/outputs/comparisons_unadjusted.png" , replace
-
-	* Citywise Raw
-
-		betterbar ///
-			correct treat_refer re_1 re_3 re_4 med_any med_l_any_1 med_l_any_2 med_l_any_3 med_k_any_9 ///
-			if city == 1 ///
-			, over(sp_male) xlab(0 "0%" 1 "100%") legend(off) xsize(7) se ///
-			barlook(1 lc(black) lw(thin) 2 lc(black) lw(thin)) subtitle("Delhi") $graph_opts
-
-		graph save "${directory}/outputs/comparisons_unadjusted_1.gph" , replace
-
-		betterbar ///
-			correct treat_refer re_1 re_3 re_4 med_any med_l_any_1 med_l_any_2 med_l_any_3 med_k_any_9 ///
-			if city == 2 ///
-			, over(sp_male) xlab(0 "0%" 1 "100%") legend(off) xsize(7) se ///
-			barlook(1 lc(black) lw(thin) 2 lc(black) lw(thin)) subtitle("Patna") $graph_opts
-
-		graph save "${directory}/outputs/comparisons_unadjusted_2.gph" , replace
-
-		betterbar ///
-			correct treat_refer re_1 re_3 re_4 med_any med_l_any_1 med_l_any_2 med_l_any_3 med_k_any_9 ///
-			if city == 3 ///
-			, over(sp_male) xlab(0 "0%" 1 "100%") legend(pos(5) ring(0) c(1) symxsize(small) symysize(small) size(small) textfirst) xsize(7) se ///
-			barlook(1 lc(black) lw(thin) 2 lc(black) lw(thin)) subtitle("Mumbai") $graph_opts
-
-		graph save "${directory}/outputs/comparisons_unadjusted_3.gph" , replace
-
-		graph combine ///
-			"${directory}/outputs/comparisons_unadjusted_1.gph" ///
-			"${directory}/outputs/comparisons_unadjusted_2.gph" ///
-			"${directory}/outputs/comparisons_unadjusted_3.gph" ///
-			, r(1) $comb_opts xsize(7)
-
-			graph export "${directory}/outputs/comparisons_unadjusted_incity.png" , replace
-
-	* Casewise Raw
-
-		betterbar ///
-			correct treat_refer re_1 re_3 re_4 med_any med_l_any_1 med_l_any_2 med_l_any_3 med_k_any_9 ///
-			if case == 1 ///
-			, over(sp_male) xlab(0 "0%" 1 "100%") legend(off) xsize(7) se ///
-			barlook(1 lc(black) lw(thin) 2 lc(black) lw(thin)) subtitle("Case 1") $graph_opts
-
-		graph save "${directory}/outputs/comparisons_unadjusted_1.gph" , replace
-
-		betterbar ///
-			correct treat_refer re_1 re_3 re_4 med_any med_l_any_1 med_l_any_2 med_l_any_3 med_k_any_9 ///
-			if case == 2 ///
-			, over(sp_male) xlab(0 "0%" 1 "100%") legend(off) xsize(7) se ///
-			barlook(1 lc(black) lw(thin) 2 lc(black) lw(thin)) subtitle("Case 2") $graph_opts
-
-		graph save "${directory}/outputs/comparisons_unadjusted_2.gph" , replace
-
-		betterbar ///
-			correct treat_refer re_1 re_3 re_4 med_any med_l_any_1 med_l_any_2 med_l_any_3 med_k_any_9 ///
-			if case == 3 ///
-			, over(sp_male) xlab(0 "0%" 1 "100%") legend(off) xsize(7) se ///
-			barlook(1 lc(black) lw(thin) 2 lc(black) lw(thin)) subtitle("Case 3") $graph_opts
-
-		graph save "${directory}/outputs/comparisons_unadjusted_3.gph" , replace
-
-		betterbar ///
-			correct treat_refer re_1 re_3 re_4 med_any med_l_any_1 med_l_any_2 med_l_any_3 med_k_any_9 ///
-			if case == 4 ///
-			, over(sp_male) xlab(0 "0%" 1 "100%") legend(pos(5) ring(0) c(1) symxsize(small) symysize(small) size(small) textfirst) xsize(7) se ///
-			barlook(1 lc(black) lw(thin) 2 lc(black) lw(thin)) subtitle("Case 4") $graph_opts
-
-		graph save "${directory}/outputs/comparisons_unadjusted_4.gph" , replace
-
-
-
-		graph combine ///
-			"${directory}/outputs/comparisons_unadjusted_1.gph" ///
-			"${directory}/outputs/comparisons_unadjusted_2.gph" ///
-			"${directory}/outputs/comparisons_unadjusted_3.gph" ///
-			"${directory}/outputs/comparisons_unadjusted_4.gph" ///
-			, r(2) $comb_opts xsize(7)
-
-			graph export "${directory}/outputs/comparisons_unadjusted_incase.png" , replace
-
-
-
-
-
-	* All Adusted ORs
-
-		chartable ///
-			correct treat_refer dr_1 re_1 re_3 re_4 med_any med_l_any_1 med_l_any_2 med_l_any_3 med_k_any_9 ///
-			if cp_5 == 1 ///
-			, command(logit) or p rhs(sp_male city_? case_? cp_5 [pweight = weight_city]) case0(Females) case1(Males)
-
-		chartable ///
-			correct treat_refer dr_1 re_1 re_3 re_4 med_any med_l_any_1 med_l_any_2 med_l_any_3 med_k_any_9 ///
-			if cp_5 == 0 ///
-			, command(logit) or p rhs(sp_male city_? case_? cp_5 [pweight = weight_city]) case0(Females) case1(Males)
-
-
-
-		chartable ///
-			correct treat_refer dr_1 re_1 re_3 re_4 med_any med_l_any_1 med_l_any_2 med_l_any_3 med_k_any_9 ///
-			, command(logit) or rhs(sp_male city_? case_? cp_5 [pweight = weight_city]) case0(Females) case1(Males) xsize(8)
-
-		graph export "${directory}/outputs/comparisons.png" , replace
-
-		chartable ///
-			 treat_refer dr_1 re_1 re_3 re_4 med_any med_l_any_1 med_l_any_2 med_l_any_3 med_k_any_9 ///
-			if correct == 1 ///
-			, command(logit) or rhs(sp_male city_? case_? cp_5) case0(Females) case1(Males)
-
-		chartable ///
-			 dr_1 re_1 re_3 re_4 med_any med_l_any_1 med_l_any_2 med_l_any_3 med_k_any_9 ///
-			if correct == 0 ///
-			, command(logit) or rhs(sp_male city_? case_? cp_5) case0(Females) case1(Males)
-
-		chartable ///
-			correct treat_refer re_1 re_3 re_4 med_any med_l_any_1 med_l_any_2 med_l_any_3 med_k_any_9 ///
-			if dr_1 == 0 , command(logit) or rhs(sp_male city_? case_? cp_5) case0(Females) case1(Males)
-
-		chartable ///
-			correct treat_refer re_1 re_3 re_4 med_any med_l_any_1 med_l_any_2 med_l_any_3 med_k_any_9 ///
-			if dr_1 == 1 , command(logit) or rhs(sp_male city_? case_? cp_5) case0(Females) case1(Males)
-
-
-		graph export "${directory}/outputs/comparisons.png" , replace
-
-
-* Table. All characteristics.
-
-	use  "${directory}/data/analysis.dta" , clear
-
-	local theVarlist checklist correct treat_refer duration p_inr_2014 ///
-			dr_1 re_1 re_3 re_4 ///
-			med_any med med_l_any_1 med_l_any_2 med_l_any_3 med_k_any_9
-
-		qui foreach var of varlist `theVarlist' {
-			local theLabel : var label `var'
-			local theLabels `"`theLabels' "`theLabel'""'
-
-			reg `var' sp_age sp_height sp_weight city_? case_? cp_5
-			est sto `var'
-			}
-
-			xml_tab `theVarlist' ///
-			using "${directory}/outputs/outcomes_robustness.xls" ///
-			, replace below keep(sp_age sp_height sp_weight) cnames(`theLabels') stats(mean N) ///
-			 lines(COL_NAMES 3 LAST_ROW 3) title("Table A. Primary Outcomes SP Characteristics Regressions")
-
-* Table. Provider gender
-
-	use "${directory}/data/analysis.dta" , clear
-
-	gen check = cp_18 * sp_male
-		label var check "Male Provider and Male SP"
-
-
-	local theVarlist checklist correct treat_refer duration p_inr_2014 ///
-			dr_1 re_1 re_3 re_4 ///
-			med_any med med_l_any_1 med_l_any_2 med_l_any_3 med_k_any_9
-
-		qui foreach var of varlist `theVarlist' {
-			local theLabel : var label `var'
-			local theLabels `"`theLabels' "`theLabel'""'
-
-			reg `var' cp_18 sp_male check sp_age sp_height sp_weight city_? case_? cp_5
-			est sto `var'
-			}
-
-			xml_tab `theVarlist' ///
-			using "${directory}/outputs/outcomes_robustness.xls" ///
-			, replace below keep(sp_male cp_18 check sp_age sp_height sp_weight) cnames(`theLabels') stats(N) ///
-			 lines(COL_NAMES 3 LAST_ROW 3) title("Table A. Primary Outcomes SP Characteristics Regressions")
-
-
-* Abstract Version
-
-	use "${directory}/data/analysis.dta" , clear
-
-	chartable ///
+	weightab ///
 		correct treat_refer dr_1 re_1 re_3 re_4 med_any med_l_any_1 med_l_any_2 med_l_any_3 med_k_any_9 ///
-		, $graph_opts command(logit) or rhs(sp_male city_? case_? cp_5) case0(Females) case1(Males) ///
-		title("Differences in TB Management By Standardized Patient Gender")
+	using "${directory}/appendix/Table_A1.xlsx" ///
+		[pweight=weight_city] ///
+	, replace over(sp_gender_group) stats(b se ll ul)
 
-		graph export "${directory}/outputs/comparisons_abstract.png" , replace width(1000)
+* Table A2
+
+	use  "${directory}/data/analysis.dta" , clear
+
+	rctreg ///
+	ce_1 ce_2 ce_3 ce_4 ce_5 ce_6 ce_7 ///
+	sp1_h_1 sp1_h_2 sp1_h_3 sp1_h_4 sp1_h_5 sp1_h_6 sp1_h_7 sp1_h_8 sp1_h_9 sp1_h_10 ///
+		sp1_h_11 sp1_h_12 sp1_h_13 sp1_h_14 sp1_h_15 sp1_h_16 sp1_h_17 sp1_h_18 sp1_h_19 ///
+		sp1_h_20 sp1_h_21 ///
+	sp2_h_1 sp2_h_2 sp2_h_3 sp2_h_4 sp2_h_5 sp2_h_6 sp2_h_7 sp2_h_8 sp2_h_9 sp2_h_10 ///
+		sp2_h_11 sp2_h_12 sp2_h_13 sp2_h_14 sp2_h_15 sp2_h_16 sp2_h_17 sp2_h_18 sp2_h_19 ///
+		sp2_h_20 sp2_h_21 sp2_h_22 sp2_h_23 sp2_h_24 sp2_h_25 sp2_h_26 sp2_h_27 sp2_h_28 ///
+	sp3_h_1 sp3_h_2 sp3_h_3 sp3_h_4 sp3_h_5 sp3_h_6 sp3_h_7 sp3_h_8 sp3_h_9 sp3_h_10 ///
+		sp3_h_11 sp3_h_12 sp3_h_13 sp3_h_14 sp3_h_15 sp3_h_16 sp3_h_17 sp3_h_18 sp3_h_19 ///
+		sp3_h_20 sp3_h_21 sp3_h_22 sp3_h_23 ///
+	sp4_h_1 sp4_h_2 sp4_h_3 sp4_h_4 sp4_h_5 sp4_h_6 sp4_h_7 sp4_h_8 sp4_h_9 sp4_h_10 ///
+		sp4_h_11 sp4_h_12 sp4_h_13 sp4_h_14 sp4_h_15 sp4_h_16 sp4_h_17 sp4_h_18 sp4_h_19 ///
+		sp4_h_20 sp4_h_21 sp4_h_22 sp4_h_23 sp4_h_24 sp4_h_25 sp4_h_26 sp4_h_27 sp4_h_28 ///
+		sp4_h_29 sp4_h_30 sp4_h_31 ///
+	using "${directory}/appendix/Table_A2.xlsx" [pweight=weight_city] ///
+	,  treatment(sp_male) controls(city_? case_? cp_5) title("History Questions") cl(facilitycode)
 
 * Have a lovely day!

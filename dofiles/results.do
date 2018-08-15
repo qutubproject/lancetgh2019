@@ -108,7 +108,7 @@
 		, ${graph_opts} command(logit) or rhs(sp_male city_? case_? cp_5) case0(Females) case1(Males) ///
 			xsize(8)
 
-		graph export "${directory}/outputs/Figure_1.eps" , replace
+		graph export "${directory}/outputs/Figure_1.tif" , replace
 		graph export "${directory}/outputs/Figure_1.png" , replace width(1000)
 
 * Have a lovely day!

@@ -2,6 +2,13 @@
 Variable       Obs Unique      Mean       Min       Max  Label
 ----------------------------------------------------------------------------------
 case          2602      4    1.9804         1         4  Case
+ce_1          2602      2   .481937         0         1  Pulse
+ce_2          2597      2   .787062         0         1  Auscultation
+ce_3          2601      2  .1791619         0         1  Temperature
+ce_4          2602      2  .3739431         0         1  Throat Exam
+ce_5          2602      2  .3647194         0         1  Blood Pressure
+ce_6          2600      2       .22         0         1  Weight
+ce_7          1582      2  .2389381         0         1  Abdomen palpitation
 checklist     2602     14  .4953707         0         1  Essential Checklist %
 city          2602      2  2.608378         2         3  City ID
 cp_5          2602      2   .443505         0         1  MBBS Provider
@@ -31,6 +38,109 @@ p_2           2442      2  .5495495         0         1  Medicine Price Known
 re_1          2602      2  .4096849         0         1  Chest X-Ray
 re_3          2602      2  .1495004         0         1  Sputum AFB
 re_4          2602      2  .0415065         0         1  Xpert MTB/RIF
+sp1_h_1       1377      2  .9368192         0         1  Duration of Cough
+sp1_h_2       1377      2  .7436456         0         1  Sputum
+sp1_h_3       1377      2  .1604938         0         1  Past TB
+sp1_h_4       1377      2  .1285403         0         1  Family TB
+sp1_h_5       1377      2  .2411038         0         1  Blood in Sputum
+sp1_h_6       1377      2  .4233842         0         1  Cough Throughout Day
+sp1_h_7       1377      2  .8307916         0         1  Fever
+sp1_h_8       1377      2   .594045         0         1  Fever Type
+sp1_h_9       1377      2  .1016703         0         1  Family Symptoms
+sp1_h_10      1377      2  .3050109         0         1  Chest Pain
+sp1_h_11      1376      2    .34375         0         1  Loss of Appetite
+sp1_h_12      1377      2  .1924473         0         1  Lost Weight
+sp1_h_13      1377      2  .0551924         0         1  Wheezing
+sp1_h_14      1377      2  .2534495         0         1  Difficulty Breathing
+sp1_h_15      1377      2  .1822803         0         1  Smoking
+sp1_h_16      1376      2  .0719477         0         1  Alcohol History
+sp1_h_17      1377      2  .5962237         0         1  Taken Medicines for Il...
+sp1_h_18      1376      2  .0537791         0         1  Diabetes
+sp1_h_19      1377      2  .0065359         0         1  HIV/AIDS
+sp1_h_20      1377      2  .5606391         0         1  Age
+sp1_h_21      1376      2    .09375         0         1  Provider Recorded Info...
+sp2_h_1        385      2  .9428571         0         1  Duration of Cough
+sp2_h_2        385      2   .612987         0         1  Sputum
+sp2_h_3        385      2  .2623377         0         1  Type of Doctor SP Saw
+sp2_h_4        385      2  .3324675         0         1  Medicine Taken
+sp2_h_5        385      2  .1142857         0         1  For How Long Medicines...
+sp2_h_6        385      2  .2779221         0         1  Family TB
+sp2_h_7        385      2  .8779221         0         1  Provider Saw X-Ray Film
+sp2_h_8        385      2  .8753247         0         1  Provider Read X-Ray Re...
+sp2_h_9        385      2  .2337662         0         1  Blood in Sputum
+sp2_h_10       385      2  .2597403         0         1  Cough Throughout Day
+sp2_h_11       385      2  .7012987         0         1  Fever
+sp2_h_12       385      2  .4883117         0         1  Fever type
+sp2_h_13       385      2  .0155844         0         1  Previous Typhoid Diagn...
+sp2_h_14       385      2  .3298701         0         1  Past TB
+sp2_h_15       385      2  .1532468         0         1  Family Symptoms
+sp2_h_16       385      2  .1272727         0         1  Chest Pain
+sp2_h_17       385      2  .4857143         0         1  Loss of Appetite
+sp2_h_18       385      2  .3844156         0         1  Lost Weight
+sp2_h_19       385      2  .0051948         0         1  Wheezing
+sp2_h_20       385      2  .1714286         0         1  Difficulty Breathing
+sp2_h_21       385      2  .1454545         0         1  Smoking
+sp2_h_22       385      2  .1194805         0         1  Alcohol History
+sp2_h_23       385      2  .1506494         0         1  Taken Medicines for Il...
+sp2_h_24       385      2  .1298701         0         1  Diabetes
+sp2_h_25       385      2  .0363636         0         1  HIV/AIDS
+sp2_h_26       385      2  .1090909         0         1  Other Recent Illnesses
+sp2_h_27       385      2  .6025974         0         1  Age
+sp2_h_28       384      2  .1119792         0         1  Provider Recorded Info...
+sp3_h_1        354      2  .8531073         0         1  Duration of Cough
+sp3_h_2        354      2  .6581921         0         1  Sputum
+sp3_h_3        354      2  .8022599         0         1  Saw Sputum Results
+sp3_h_4        353      2  .2776204         0         1  Past Treatment for TB
+sp3_h_5        354      2  .3389831         0         1  Blood in Sputum
+sp3_h_6        354      2  .4915254         0         1  Cough Throughout Day
+sp3_h_7        354      2  .8474576         0         1  Fever
+sp3_h_8        354      2  .6214689         0         1  Fever Type
+sp3_h_9        354      2   .200565         0         1  Family TB
+sp3_h_10       354      2  .1129944         0         1  Family or Family with ...
+sp3_h_11       354      2  .1949153         0         1  Chest Pain
+sp3_h_12       354      2  .4180791         0         1  Loss of Appetite
+sp3_h_13       354      2  .3050847         0         1  Lost Weight
+sp3_h_14       354      2  .0225989         0         1  Wheezing
+sp3_h_15       354      2  .1751412         0         1  Difficulty Breathing
+sp3_h_16       354      2  .1553672         0         1  Smoking
+sp3_h_17       354      2  .1045198         0         1  Alcohol
+sp3_h_18       354      2  .4463277         0         1  Taken Medicines for Il...
+sp3_h_19       354      2  .0084746         0         1  Diabetes
+sp3_h_20       354      2  .0084746         0         1  HIV/AIDS
+sp3_h_21       353      2  .1104816         0         1  Children in Family
+sp3_h_22       353      2  .5155807         0         1  Age
+sp3_h_23       354      2  .0988701         0         1  Provider Recorded Info...
+sp4_h_1        486      2  .9485597         0         1  Duration of Cough
+sp4_h_2        486      2  .7983539         0         1  Sputum
+sp4_h_3        486      2  .1152263         0         1  Saw Sputum Results
+sp4_h_4        486      2  .5658436         0         1  Medication Taken Last ...
+sp4_h_5        486      2  .2078189         0         1  Visited Governmental H...
+sp4_h_6        485      2  .2453608         0         1  Treatment for Previous...
+sp4_h_7        486      2   .281893         0         1  Sputum or X-Rays Done ...
+sp4_h_8        486      2  .1851852         0         1  Diagnosis Given by Gov...
+sp4_h_9        486      2  .3786008         0         1  Past TB Treatment
+sp4_h_10       486      2  .6872428         0         1  For How Long Past TB T...
+sp4_h_11       486      2  .5740741         0         1  Reason for Stopping
+sp4_h_12       486      2  .4032922         0         1  Previous Treatment Med...
+sp4_h_13       486      2  .2901235         0         1  Blood in Sputum
+sp4_h_14       486      2  .5288066         0         1  Cough Throughout Day
+sp4_h_15       485      2  .7587629         0         1  Fever
+sp4_h_16       486      2  .4773663         0         1  Fever Type
+sp4_h_17       486      2  .1419753         0         1  Similar Symptoms Before
+sp4_h_18       486      2  .1748971         0         1  Family TB
+sp4_h_19       486      2  .3950617         0         1  Chest Pain
+sp4_h_20       485      2  .4804124         0         1  Loss of Appetite
+sp4_h_21       485      2  .3402062         0         1  Lost Weight
+sp4_h_22       485      2  .0721649         0         1  Wheezing
+sp4_h_23       485      2  .3443299         0         1  Difficulty in Breathing
+sp4_h_24       485      2  .2123711         0         1  Smoking
+sp4_h_25       485      2  .0969072         0         1  Alcohol
+sp4_h_26       485      2  .0824742         0         1  Diabetes
+sp4_h_27       485      2  .0123711         0         1  HIV/AIDS
+sp4_h_28       485      2  .1381443         0         1  High Blood Pressure or...
+sp4_h_29       485      2  .2309278         0         1  Presence of Children
+sp4_h_30       485      2  .6474227         0         1  Age
+sp4_h_31       485      2   .142268         0         1  Provider Recorded Info...
 sp4_spur_1    2602      1         0         0         0  SP brought a sputum re...
 sp_male       2602      2  .7302075         0         1  SP Male
 type          2602      4  2.717909         1         4  Sample Type

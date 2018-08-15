@@ -56,7 +56,7 @@
 		saveopendata ///
 			"analysis" ///
 		using ///
-			"results.do " ///
+			"results.do appendix.do" ///
 		, compact
 
 	copy "${directory}/dofiles/analysis.dta" "${directory}/data/analysis.dta" , replace
