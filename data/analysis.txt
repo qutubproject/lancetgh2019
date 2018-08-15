@@ -1,0 +1,58 @@
+
+Variable       Obs Unique      Mean       Min       Max  Label
+----------------------------------------------------------------------------------
+case          2602      4    1.9804         1         4  Case
+checklist     2602     14  .4953707         0         1  Essential Checklist %
+city          2602      2  2.608378         2         3  City ID
+cp_5          2602      2   .443505         0         1  MBBS Provider
+cp_17         2600      3  2.185385         1         3  Provider Age Group
+cp_18         2594      2  .8739399         0         1  Provider Male
+cp_19         2602     37  2.267102         0        63  Patients Waiting on Ar...
+cp_20         2602     29  1.933897         0        48  Patients Waiting on De...
+cp_21         2598      2  .6335643         0         1  Provider Has Compounder
+dr_1          2602      2  .3793236         0         1  TB Suspicion
+duration      2592    759  6.290246         0  50.73333  Time with Provider (min)
+facilitycode  2602   1203         .         .         .  Qutub ID
+false         2602      1         0         0         0  Multi-Sample Duplicate...
+g1            2600      2  .1073077         0         1  Used Cell Phone
+g2            2600      2  .1507692         0         1  Other People in Room
+g3            2600      2  .0284615         0         1  TV On
+g4            2600      2  .8269231         0         1  Did you like this doctor?
+g5            2599      3  .7933821         0         3  Would you go to this d...
+g6            2600      3  2.629231         1         3  Doctor create private ...
+g7            2600      3  2.379231         1         3  Knowledgeable about il...
+g8            2600      3  2.381923         1         3  Address worries seriou...
+g9            2600      3  1.457308         1         3  Explain about illness?
+g10           2600      3  2.126923         1         3  Explain treatment plan?
+g11           2600     11  6.269231         0        10  SP provider rating
+id            2602   1203  760.7782       101      1347  Facility ID
+p_1           1323      2  .8072562         0         1  Labs Price Known
+p_2           2442      2  .5495495         0         1  Medicine Price Known
+re_1          2602      2  .4096849         0         1  Chest X-Ray
+re_3          2602      2  .1495004         0         1  Sputum AFB
+re_4          2602      2  .0415065         0         1  Xpert MTB/RIF
+sp4_spur_1    2602      1         0         0         0  SP brought a sputum re...
+sp_male       2602      2  .7302075         0         1  SP Male
+type          2602      4  2.717909         1         4  Sample Type
+med_k_any_9   2602      2  .1583397         0         1  Steroids
+med_l_any_1   2602      2  .0453497         0         1  Anti-TB Treatment
+med_l_any_2   2602      2  .1260569         0         1  Fluoroquinolone
+med_l_any_3   2602      2  .4715603         0         1  Other Antibiotic
+med           2602     11  3.630284         0        11  Polypharmacy
+med_any       2602      2  .8604919         0         1  Any Medicine
+correct       2602      2  .3685626         0         1  Correct Management
+treat_refer   2602      2   .074558         0         1  Referred Case
+sp_gender_~p  2602      4  4.946964         3         6  City-Gender Group
+city_2        2602      2  .3916218         0         1  Patna
+city_3        2602      2  .6083782         0         1  Mumbai
+case_1        2602      2  .5292083         0         1  Naive Case 1
+case_2        2602      2  .1479631         0         1  X-Ray Case 2
+case_3        2602      2  .1360492         0         1  Sputum Case 3
+case_4        2602      2  .1867794         0         1  MDR Case 4
+cp_17_1       2602      2  .0472713         0         1  Under 30
+cp_17_2       2602      2  .7194466         0         1  30-50
+cp_17_3       2602      2  .2325135         0         1  Over 50
+weight        2602     23         1  .3846154  1.667491  City-Sample Weight
+weight_city   2602     31  .0030746  .0001241   .018769  Within-City-Case Weight
+sp_id         2602     25  13.35665         1        25  SP Name
+----------------------------------------------------------------------------------
