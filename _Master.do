@@ -48,6 +48,7 @@
 	// Anonymize ID
 
 		drop sp_id
+		replace sp_name = "Shashikala" if sp_name == "Shahikala"
 		encode sp_name , gen(sp_id)
 		label drop sp_id
 
