@@ -22,8 +22,6 @@
 
 	use "${directory}/data/analysis.dta" , clear
 
-	replace sp4_spur_1 = . if case !=4
-
 	rctreg ///
 		cp_5 cp_17_1 cp_17_2 cp_17_3 cp_18 cp_19 cp_20 cp_21 ///
 	using "${directory}/outputs/Table_4.xlsx" ///
@@ -60,8 +58,6 @@
   		label def any_male 0 "Female SP`i'" 1 "Male SP`i'"
   			label var any_male any_male
 
-  		table temptype any_male , c(mean correct freq)
-
   		chartable ///
   			correct? ///
   			using "${directory}/outputs/Table_5_`i'.xlsx" ///
@@ -73,8 +69,6 @@
 * Table 6
 
 	use "${directory}/data/analysis.dta" , clear
-
-	replace sp4_spur_1 = . if case !=4
 
 	replace g5 = 1 if g5 == 3
 
