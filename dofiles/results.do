@@ -10,7 +10,9 @@
 		using "${directory}/outputs/Table_3_1.xls" ///
 		, replace
 
-	collapse (firstnm) sp_gender_group , by(sp_id case)
+	collapse (firstnm) sp_male , by(sp_id case city)
+
+	egen sp_gender_group = group(city sp_male) , label
 
 	tabout sp_gender_group  case  ///
 		using "${directory}/outputs/Table_3_2.xls" ///
