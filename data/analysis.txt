@@ -141,7 +141,6 @@ sp4_h_28       485      2  .1381443         0         1  High Blood Pressure or 
 sp4_h_29       485      2  .2309278         0         1  Presence of Children
 sp4_h_30       485      2  .6474227         0         1  Age
 sp4_h_31       485      2   .142268         0         1  Provider Recorded Information
-sp4_spur_1    2602      1         0         0         0  SP brought a sputum report
 sp_male       2602      2  .7302075         0         1  SP Male
 type          2602      4  2.717909         1         4  Sample Type
 med_k_any_9   2602      2  .1583397         0         1  Steroids
