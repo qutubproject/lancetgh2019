@@ -33,25 +33,47 @@ program define sim_sp , rclass
 		}
 
 		// Assign SPs
-		gen sp_id = 1 + mod(_n,25)
+		gen sp_id = 1 + mod(_n,`sps')
 			merge m:1 sp_id using `sp' , nogen
 
 		// Interaction outcome
-		gen Y = .25 * sp_male + clin_fe + sp_fe + rnormal()
+		gen Y = rnormal() + .1 * sp_male + clin_fe + sp_fe
+			reg Y sp_male , cl(sp_id)
+			mat results = nullmat(results) ///
+				\ [_b[sp_male] , _se[sp_male], 1]
 			reg Y sp_male
 			mat results = nullmat(results) ///
-				\ [_b[sp_male] , _se[sp_male]]
+				\ [_b[sp_male] , _se[sp_male], 0]
 	}
 
 	return matrix results = results
-	
+
 end
 
 // Loop over it
 
-	sim_sp , provs(1000) sps(2)
-		mat a = r(results)
-		clear
-		svmat a
+	clear
+	tempfile a
+	save `a' , emptyok
+
+	cap mat drop results
+	qui forvalues sps = 4(2)24 {
+		qui forvalues provs = 200(200)2000 {
+
+		sim_sp , provs(`provs') sps(`sps') reps(10)
+			mat a = r(results)
+			clear
+			svmat a
+			gen sps = `sps'
+			gen provs = `provs'
+			collapse (sd) a1 (mean) a2, by(sps provs a3)
+			append using `a'
+			save `a' , replace
+		}
+	}
+
+	// Show that SEs follow clustered aymptotics
+
+		 tw (lpoly a1 sps if a3 == 0)(lpoly a2 sps if a3 == 0)(lpoly a2 sps if a3 == 1)
 
 // Have a lovely day!
