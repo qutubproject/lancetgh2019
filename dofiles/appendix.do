@@ -29,7 +29,7 @@
 		sp4_h_20 sp4_h_21 sp4_h_22 sp4_h_23 sp4_h_24 sp4_h_25 sp4_h_26 sp4_h_27 sp4_h_28 ///
 		sp4_h_29 sp4_h_30 sp4_h_31 ///
 	using "${directory}/appendix/Table_A2.xlsx" [pweight=weight_city] ///
-	,  treatment(sp_male) controls(city_? case_? cp_5) title("History Questions") cl(facilitycode)
+	,  treatment(sp_male) controls(city_? case_? cp_5) title("History Questions") cl(sp_id)
 
 // Figure A1: Simulate SP fixed effects for power calculations
 
@@ -113,20 +113,21 @@
 	// Contours
 
 		tw contour sd_actual sps provs if cluster == 0 ///
-		,  ${graph_opts} ccuts(.3(.1)1) title("True sampling variation for effect") xtit("Facilities") ytit("Individual SPs")
+		,  ${graph_opts} ccuts(.3(.1)1) title("True SE size for gender effect") xtit("Number of Facilities") ytit("Number of Individual SPs")
 			graph save "a.gph" , replace
 		tw contour se_asymp  sps provs if cluster == 0 ///
-		,  ${graph_opts} title("Unadjusted regression SE sizes") xtit("Facilities") ytit("Individual SPs")
+		,  ${graph_opts} title("Unadjusted regression SE sizes") xtit("Number of Facilities") ytit("Number of Individual SPs")
 			graph save "b.gph" , replace
 		tw contour se_asymp  sps provs if cluster == 1 ///
-		,  ${graph_opts} ccuts(.3(.1)1) title("Clustered regression SE sizes") xtit("Facilities") ytit("Individual SPs")
+		,  ${graph_opts} ccuts(.3(.1)1) title("Clustered regression SE sizes") xtit("Number of Facilities") ytit("Number of Individual SPs")
 			graph save "c.gph" , replace
 
 		tw ///
 		 	(lpoly sd_actual sps if cluster == 0 , lw(thick) degree(1)) ///
 			(lpoly se_asymp  sps if cluster == 0 , lw(thick) degree(1)) ///
 			(lpoly se_asymp  sps if cluster == 1 , lw(thick) degree(1)) ///
-		, ${graph_opts} ytit("") xtit("Number of Individual SPs {&rarr}") legend(r(1) order(1 "True" 2 "Asymptotic" 3 "Clustered")) ylab(0(.25)1)
+		, ${graph_opts} ytit(" ") title("Standard error size, by number of SPs")  xtit("Number of Individual SPs {&rarr}") ///
+			legend(symxsize(small) r(1) order(1 "True" 2 "Unadjusted" 3 "Clustered")) ylab(0(.25)1)
 			graph save "d.gph" , replace
 
 		graph combine a.gph c.gph b.gph d.gph, ${comb_opts}
@@ -138,6 +139,3 @@
 		!rm d.gph
 
 // Have a lovely day!
-
-
-* Have a lovely day!
