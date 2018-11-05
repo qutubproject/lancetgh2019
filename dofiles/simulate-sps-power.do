@@ -60,7 +60,7 @@ end
 	qui forvalues sps = 4(2)24 {
 		qui forvalues provs = 200(200)2000 {
 
-		sim_sp , provs(`provs') sps(`sps') reps(10)
+		sim_sp , provs(`provs') sps(`sps') reps(100)
 			mat a = r(results)
 			clear
 			svmat a
@@ -72,8 +72,37 @@ end
 		}
 	}
 
-	// Show that SEs follow clustered aymptotics
+	// Clean
 
-		 tw (lpoly a1 sps if a3 == 0)(lpoly a2 sps if a3 == 0)(lpoly a2 sps if a3 == 1)
+		rename (a1 a2 a3) (sd_actual se_asymp cluster)
+		label var sd_actual " "
+		label var se_asymp  " "
+
+	// Contours
+
+		tw contour sd_actual sps provs if cluster == 0 ///
+		,  ${graph_opts} ccuts(.3(.1)1) title("True {&beta} errors") xtit("Facilities") ytit("Individual SPs")
+			graph save "a.gph" , replace
+		tw contour se_asymp  sps provs if cluster == 0 ///
+		,  ${graph_opts} title("Asymptotic {&beta} SEs") xtit("Facilities") ytit("Individual SPs")
+			graph save "b.gph" , replace
+		tw contour se_asymp  sps provs if cluster == 1 ///
+		,  ${graph_opts} ccuts(.3(.1)1) title("Asymptotic clustered {&beta} SEs") xtit("Facilities") ytit("Individual SPs")
+			graph save "c.gph" , replace
+
+		tw ///
+		 	(lpoly sd_actual sps if cluster == 0 , lw(thick) degree(1)) ///
+			(lpoly se_asymp  sps if cluster == 0 , lw(thick) degree(1)) ///
+			(lpoly se_asymp  sps if cluster == 1 , lw(thick) degree(1)) ///
+		, ${graph_opts} ytit("") xtit("SPs") legend(r(1) order(1 "True" 2 "Asymptotic" 3 "Clustered")) ylab(0(.25)1)
+			graph save "d.gph" , replace
+
+		graph combine a.gph c.gph b.gph d.gph, ${comb_opts}
+			graph export "/users/bbdaniels/desktop/sp-clusters.png" , replace
+
+		!rm a.gph
+		!rm b.gph
+		!rm c.gph
+		!rm d.gph
 
 // Have a lovely day!
