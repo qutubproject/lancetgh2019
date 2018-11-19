@@ -2,7 +2,6 @@
 
 	global directory "/Users/bbdaniels/GitHub/lancetgh2018/"
 
-
 * Load .adofiles
 
 	local adoFiles : dir `"${directory}/ado/"' files "*.ado"
@@ -39,32 +38,6 @@
 	global numbering `""(1)" "(2)" "(3)" "(4)" "(5)" "(6)" "(7)" "(8)" "(9)" "(10)""'
 	global bar lc(white) lw(thin) la(center) fi(100) // <- remove la(center) for Stata < 15
 
-* Clean data for release
-
-	cd "${directory}/dofiles/"
-
-	use "/Users/bbdaniels/Dropbox/WorldBank/qutub/Restricted/CrossCityAnalysis/constructed/analysis_baseline.dta" , clear
-
-	// Anonymize ID
-
-		drop sp_id
-		replace sp_name = "Shashikala" if sp_name == "Shahikala"
-		encode sp_name , gen(sp_id)
-		label drop sp_id
-
-	// Save
-
-		saveopendata ///
-			"analysis" ///
-		using ///
-			"results.do appendix.do" ///
-		, compact
-
-	copy "${directory}/dofiles/analysis.dta" "${directory}/data/analysis.dta" , replace
-		!rm "${directory}/dofiles/analysis.dta"
-	copy "${directory}/dofiles/analysis.txt" "${directory}/data/analysis.txt" , replace
-		!rm "${directory}/dofiles/analysis.txt"
--
 * Generate all the results
 
 	qui do "${directory}/dofiles/results.do"

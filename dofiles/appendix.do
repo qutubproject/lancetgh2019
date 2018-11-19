@@ -88,6 +88,7 @@
 	tempfile a
 	save `a' , emptyok
 
+	set seed 20181119
 	cap mat drop results
 	qui forvalues sps = 4(2)26 {
 		qui forvalues provs = 200(200)1600 {

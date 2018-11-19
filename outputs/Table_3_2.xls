@@ -1,3 +1,9 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:ef7cc093164d87e8611b03c062c06ee653a69e4613e59ea977c3cdab64860045
-size 253
+	Case				
+group(city sp_male)	Naive Case 1	X-Ray Case 2	Sputum Case 3	MDR Case 4	Total
+	No.	No.	No.	No.	No.
+Patna 0	5.0	1.0	2.0	1.0	9.0
+Patna 1	8.0	1.0	1.0	1.0	11.0
+Mumbai 0	2.0	1.0	1.0	1.0	5.0
+Mumbai 1	6.0	1.0	2.0	3.0	12.0
+Total	21.0	4.0	6.0	6.0	37.0
+
