@@ -90,7 +90,7 @@
 
 	set seed 20181119
 	cap mat drop results
-	qui forvalues sps = 4(2)26 {
+	qui forvalues sps = 4(2)100 {
 		qui forvalues provs = 200(200)1600 {
 
 		sim_sp , provs(`provs') sps(`sps') reps(100)
