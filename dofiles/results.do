@@ -26,7 +26,7 @@
 		cp_5 cp_17_1 cp_17_2 cp_17_3 cp_18 cp_19 cp_20 cp_21 ///
 	using "${directory}/outputs/Table_4.xlsx" ///
 		[pweight=weight_city] ///
-	, p ci treatment(sp_male) controls(city_? case_?) title("Title") cl(sp_id)
+	, p ci treatment(sp_male) controls(city_? case_?) title("Title") cl(sp_id) sd 
 
 * Table 5
 
@@ -80,7 +80,7 @@
 		g1 g2 g3 checklist duration g6 g9 g10 g4 g5 g7 g8 g11 ///
 	using "${directory}/outputs/Table_6.xlsx" ///
 		[pweight=weight_city] ///
-	, p ci treatment(sp_male) controls(city_? case_?) title("Title") cl(sp_id)
+	, p ci treatment(sp_male) controls(city_? case_?) title("Title") cl(sp_id) sd
 
 * Table 7
 
@@ -103,7 +103,7 @@
 		med_any med med_l_any_1 med_l_any_2 med_l_any_3 med_k_any_9 ///
 		using "${directory}/outputs/Table_7.xlsx" ///
 		[pweight=weight_city] ///
-		, p ci treatment(sp_male) controls(city_? case_? cp_5) title("Key Outcomes") cl(sp_id)
+		, p ci treatment(sp_male) controls(city_? case_? cp_5) title("Key Outcomes") cl(sp_id) sd
 
 * Figure 1
 
@@ -114,6 +114,7 @@
 		, ${graph_opts} command(logit) regopts(cl(sp_id)) or rhs(sp_male city_? case_? cp_5) case0(Women) case1(Men) ///
 			xsize(8)
 
+		graph export "${directory}/outputs/Figure_1.eps" , replace
 		graph export "${directory}/outputs/Figure_1.tif" , replace
 		graph export "${directory}/outputs/Figure_1.png" , replace width(1000)
 
